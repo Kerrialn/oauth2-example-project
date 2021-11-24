@@ -10,6 +10,10 @@ security:
                 class: App\Entity\User
                 property: email
     firewalls:
+        main:
+            form_login:
+                login_path: login
+                check_path: login
         api_token:
             pattern: ^/api/token$
             security: false
@@ -19,3 +23,4 @@ security:
             stateless: true
             oauth2: true
     access_control:
+        - { path: ^/authorize, roles: IS_AUTHENTICATED_REMEMBERED }

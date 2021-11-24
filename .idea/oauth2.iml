@@ -85,6 +85,10 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/monolog-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/monolog-bridge" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/monolog/monolog" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/translation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/twig-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/twig-bridge" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/twig/twig" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

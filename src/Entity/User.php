@@ -32,6 +32,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Column(type: 'string')]
     private string $password;
 
+    #[Column(type: 'boolean')]
+    private bool $isActive = true;
+
+
     public function getId(): int
     {
         return $this->id;
@@ -123,5 +127,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsActive(): bool
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * @param bool $isActive
+     */
+    public function setIsActive(bool $isActive): void
+    {
+        $this->isActive = $isActive;
     }
 }
