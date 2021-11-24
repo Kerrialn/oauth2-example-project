@@ -65,7 +65,13 @@ final class AuthorizationCodeListener
             $event->setUser($user);
             $event->resolveAuthorization(true);
         } else {
-            $response = new JsonResponse('authentication failed', 200);
+            $response = new Response(
+                $this->urlGenerator->generate(
+                    'app_consent',
+                    $request->query->all()
+                ), 307
+            );
+
             $event->setResponse($response);
         }
     }
