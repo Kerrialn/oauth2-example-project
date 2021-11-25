@@ -10,10 +10,6 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
             - '../src/Tests/'
-
-    App\EventListener\UserResolveListener:
-      arguments:
-        - '@app.user_provider'
-        - '@security.password_hasher'
-      tags:
-        - { name: kernel.event_listener, event: league.oauth2_server.event.authorization_request_resolve, method: onUserResolve }
+    App\EventListener\AuthorizationCodeListener:
+        tags:
+            - { name: kernel.event_listener, event: 'league.oauth2_server.event.authorization_request_resolve', method: onAuthorizationRequest }

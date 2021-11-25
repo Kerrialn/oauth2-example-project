@@ -129,17 +129,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    /**
-     * @return bool
-     */
     public function getIsActive(): bool
     {
         return $this->isActive;
     }
 
-    /**
-     * @param bool $isActive
-     */
     public function setIsActive(bool $isActive): void
     {
         $this->isActive = $isActive;

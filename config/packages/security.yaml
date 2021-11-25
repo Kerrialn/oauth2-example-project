@@ -6,9 +6,9 @@ security:
             algorithm: auto
     providers:
         app_user_provider:
-            entity:
-                class: App\Entity\User
-                property: email
+                    entity:
+                        class: App\Entity\User
+                        property: email
     firewalls:
         main:
             form_login:

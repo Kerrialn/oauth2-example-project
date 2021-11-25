@@ -2,12 +2,12 @@
 
 namespace App\EventListener;
 
-use ECSPrefix20211002\Symfony\Component\HttpFoundation\RedirectResponse;
 use League\Bundle\OAuth2ServerBundle\Event\AuthorizationRequestResolveEvent;
 use League\Bundle\OAuth2ServerBundle\OAuth2Events;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use function dump;
 
 class UserResolveListener
 {
@@ -43,13 +43,11 @@ class UserResolveListener
                 ->remove(self::SESSION_AUTHORIZATION_RESULT);
 
         } else {
-            $response = new Response(
-                $this->urlGenerator->generate(
-                    'app_consent',
-                    $request->query->all()
-                ), 307
-            );
+            $url = $this->urlGenerator->generate(
+                'app_consent',
+                $request->query->all());
 
+            $response = new RedirectResponse($url);
             $event->setResponse($response);
         }
 
