@@ -1,5 +1,5 @@
 
-# Example symfony integration of [thephpleague/oauth2-server-bundle](https://github.com/thephpleague/oauth2-server-bundle) 
+# Example Symfony integration of [thephpleague/oauth2-server-bundle](https://github.com/thephpleague/oauth2-server-bundle) 
 
 This is an example Symfony 5.4 application set up to work with the oAuth2 Authorization Code grant for reference.
 
