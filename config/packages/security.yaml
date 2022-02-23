@@ -6,21 +6,27 @@ security:
             algorithm: auto
     providers:
         app_user_provider:
-                    entity:
-                        class: App\Entity\User
-                        property: email
+            entity:
+                class: App\Entity\User
+                property: email
     firewalls:
-        main:
-            form_login:
-                login_path: login
-                check_path: login
-        api_token:
-            pattern: ^/api/token$
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        token:
+            pattern: ^/token
             security: false
         api:
             pattern: ^/api
             security: true
             stateless: true
             oauth2: true
+        main:
+            form_login:
+                login_path: login
+                check_path: login
+            logout:
+                path: logout
     access_control:
         - { path: ^/authorize, roles: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/api, roles: ROLE_USER }
