@@ -1,15 +1,15 @@
 <?php
 
-namespace App\EventListener;
+namespace App\EventSubscriber;
 
 use League\Bundle\OAuth2ServerBundle\Event\AuthorizationRequestResolveEvent;
 use League\Bundle\OAuth2ServerBundle\OAuth2Events;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use function dump;
 
-class UserResolveListener
+class AuthorizationRequestResolverSubscriber implements EventSubscriberInterface
 {
     public const SESSION_AUTHORIZATION_RESULT = '_app.oauth2.authorization_result';
 
@@ -25,27 +25,22 @@ class UserResolveListener
     public static function getSubscribedEvents(): array
     {
         return [
-            OAuth2Events::AUTHORIZATION_REQUEST_RESOLVE => 'resolve',
+            OAuth2Events::AUTHORIZATION_REQUEST_RESOLVE => 'onAuthorizationRequestResolve',
         ];
     }
 
-    public function resolve(AuthorizationRequestResolveEvent $event): void
+    public function onAuthorizationRequestResolve(AuthorizationRequestResolveEvent $event): void
     {
         $request = $this->requestStack->getCurrentRequest();
 
-        if ($request->getSession()
-            ->has(self::SESSION_AUTHORIZATION_RESULT)) {
+        if ($request->getSession()->has(self::SESSION_AUTHORIZATION_RESULT)) {
             $event->resolveAuthorization(
-                $request->getSession()
-                    ->get(self::SESSION_AUTHORIZATION_RESULT)
+                $request->getSession()->get(self::SESSION_AUTHORIZATION_RESULT)
             );
-            $request->getSession()
-                ->remove(self::SESSION_AUTHORIZATION_RESULT);
+            $request->getSession()->remove(self::SESSION_AUTHORIZATION_RESULT);
 
         } else {
-            $url = $this->urlGenerator->generate(
-                'app_consent',
-                $request->query->all());
+            $url = $this->urlGenerator->generate('app_consent', $request->query->all());
 
             $response = new RedirectResponse($url);
             $event->setResponse($response);
