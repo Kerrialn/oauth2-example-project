@@ -1,5 +1,12 @@
 
-# Symfony Integration
+# Example symfony integration of [thephpleague/oauth2-server-bundle](https://github.com/thephpleague/oauth2-server-bundle) 
+
+This is an example Symfony 5.4 application set up to work with the oAuth2 Authorization Code grant for reference.
+
+The steps taken to integrate the oauth2-server-bundle into the Symfony application were:
+
+**TODO: The below needs updating slightly**
+
 ## Authorization Code Grant
 
 
