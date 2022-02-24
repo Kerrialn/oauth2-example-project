@@ -3,5 +3,8 @@ parameters:
 	paths:
 		- src
 	checkGenericClassInNonGenericObjectType: false
+	checkMissingIterableValueType: false
 	ignoreErrors:
 	    - '#Call to an undefined method Symfony\\Component\\Form\\FormInterface::[a-zA-Z0-9\\_]()#'
+	    - '#^Cannot call method getSession\(\) on Symfony\\Component\\HttpFoundation\\Request#'
+	    - '#^Cannot access property \$query on Symfony\\Component\\HttpFoundation\\Request#'

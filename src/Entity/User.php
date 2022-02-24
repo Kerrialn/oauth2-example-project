@@ -7,18 +7,17 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
-use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Uid\Uuid;
 
 #[Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[Id]
-    #[GeneratedValue]
-    #[Column(type: 'integer')]
-    private int $id;
+    #[Column(type: 'uuid', unique: true)]
+    private Uuid $id;
 
     #[Column(type: 'string', length: 180, unique: true)]
     private string $email;
@@ -35,7 +34,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Column(type: 'boolean')]
     private bool $isActive = true;
 
-    public function getId(): int
+    public function __construct()
+    {
+        $this->id = Uuid::v4();
+    }
+
+    public function getId(): Uuid
     {
         return $this->id;
     }

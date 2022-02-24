@@ -121,6 +121,9 @@
     "phpstan/phpstan": {
         "version": "1.2.0"
     },
+    "phpstan/phpstan-doctrine": {
+        "version": "1.2.11"
+    },
     "psr/cache": {
         "version": "2.0.0"
     },
@@ -281,6 +284,9 @@
     "symfony/polyfill-php81": {
         "version": "v1.23.0"
     },
+    "symfony/polyfill-uuid": {
+        "version": "v1.24.0"
+    },
     "symfony/property-access": {
         "version": "v5.3.8"
     },
@@ -354,6 +360,9 @@
             "config/packages/twig.yaml",
             "templates/base.html.twig"
         ]
+    },
+    "symfony/uid": {
+        "version": "v5.4.3"
     },
     "symfony/validator": {
         "version": "5.3",
