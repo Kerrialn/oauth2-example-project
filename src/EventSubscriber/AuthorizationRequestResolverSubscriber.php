@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\EventSubscriber;
 
 use League\Bundle\OAuth2ServerBundle\Event\AuthorizationRequestResolveEvent;
@@ -13,15 +15,16 @@ class AuthorizationRequestResolverSubscriber implements EventSubscriberInterface
 {
     public const SESSION_AUTHORIZATION_RESULT = '_app.oauth2.authorization_result';
 
-    private RequestStack $requestStack;
-    private UrlGeneratorInterface $urlGenerator;
-
-    public function __construct(RequestStack $requestStack, UrlGeneratorInterface $urlGenerator)
+    public function __construct(
+        private RequestStack $requestStack,
+        private UrlGeneratorInterface $urlGenerator
+    )
     {
-        $this->requestStack = $requestStack;
-        $this->urlGenerator = $urlGenerator;
     }
 
+    /**
+     * @return array<string, string>
+     */
     public static function getSubscribedEvents(): array
     {
         return [

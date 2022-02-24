@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
@@ -12,8 +14,12 @@ class AuthorizationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('allow', SubmitType::class, ['label' => 'Allow'])
-        ->add('deny', SubmitType::class, ['label' => 'Deny'])
+            ->add('allow', SubmitType::class, [
+                'label' => 'Allow',
+            ])
+            ->add('deny', SubmitType::class, [
+                'label' => 'Deny',
+            ])
         ;
     }
 

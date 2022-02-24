@@ -1,4 +1,6 @@
 {
+    "name": "kerrialn/oauth2-example-project",
+    "description": "An example project of thephpleague/oauth2-server-bundle oAuth implementation in a Symfony project",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
@@ -19,6 +21,7 @@
         "symfony/runtime": "5.4.*",
         "symfony/security-bundle": "5.4.*",
         "symfony/twig-bundle": "5.4.*",
+        "symfony/uid": "5.4.*",
         "symfony/validator": "5.4.*",
         "symfony/yaml": "5.4.*"
     },
@@ -50,6 +53,11 @@
         "symfony/polyfill-php72": "*"
     },
     "scripts": {
+        "rector-dry": "vendor/bin/rector p --dry-run --ansi",
+        "rector": "vendor/bin/rector p --ansi",
+        "check-cs": "vendor/bin/ecs check --ansi",
+        "fix-cs": "vendor/bin/ecs check --fix --ansi",
+        "phpstan": "vendor/bin/phpstan --ansi",
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
@@ -72,6 +80,7 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.4",
+        "phpstan/phpstan-doctrine": "^1.2",
         "rector/rector": "^0.12.4",
         "symplify/easy-coding-standard": "^9.4"
     }
