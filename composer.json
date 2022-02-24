@@ -1,4 +1,6 @@
 {
+    "name": "kerrialn/oauth2-example-project",
+    "description": "An example project of thephpleague/oauth2-server-bundle oAuth implementation in a Symfony project",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
