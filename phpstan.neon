@@ -1,0 +1,7 @@
+parameters:
+	level: 8
+	paths:
+		- src
+	checkGenericClassInNonGenericObjectType: false
+	ignoreErrors:
+	    - '#Call to an undefined method Symfony\\Component\\Form\\FormInterface::[a-zA-Z0-9\\_]()#'

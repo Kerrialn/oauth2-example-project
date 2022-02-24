@@ -18,6 +18,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     // Define what rule sets will be applied
     $containerConfigurator->import(SetList::CODE_QUALITY);
+    $containerConfigurator->import(SetList::PHP_80);
     $containerConfigurator->import(SetList::TYPE_DECLARATION);
 
     // get services (needed for register a single rule)

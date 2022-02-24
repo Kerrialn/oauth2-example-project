@@ -35,7 +35,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Column(type: 'boolean')]
     private bool $isActive = true;
 
-
     public function getId(): int
     {
         return $this->id;

@@ -50,6 +50,11 @@
         "symfony/polyfill-php72": "*"
     },
     "scripts": {
+        "rector-dry": "vendor/bin/rector p --dry-run --ansi",
+        "rector": "vendor/bin/rector p --ansi",
+        "check-cs": "vendor/bin/ecs check --ansi",
+        "fix-cs": "vendor/bin/ecs check --fix --ansi",
+        "phpstan": "vendor/bin/phpstan --ansi",
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
