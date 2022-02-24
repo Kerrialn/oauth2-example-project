@@ -8,7 +8,6 @@ use App\EventSubscriber\AuthorizationRequestResolverSubscriber;
 use App\Form\AuthorizationType;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -42,7 +41,6 @@ class LoginController extends AbstractController
     {
         $form = $this->createForm(AuthorizationType::class);
         $form->handleRequest($request);
-
 
         if ($form->isSubmitted() && $form->isValid()) {
             switch (true) {
